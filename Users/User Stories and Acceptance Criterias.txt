@@ -1,0 +1,22 @@
+####################
+User Story 1:
+As a multiscreen user, I want to access this website through my phone or my tablet, so that I’m not constrained by using my laptop at my desk.
+
+Acceptance criteria 1:
+When the user accesses the website through mobile devices, the website page should be resized to fit the screen resolution without content missing or overlapping.
+
+####################
+User Story 2:
+As a lazy entertainment seeker, I want to have a list of popular movies recommended to me, so that I don’t have to spend a lot of time searching for something interesting. 
+
+Acceptance criteria 2:
+When the “Movie Recommendation” button is clicked, the website should generate a list of movies with high scores.
+
+####################
+User Story 3:
+As a fan of Tom Holland, I want to get a list of movies that Tom Holland has acted in by searching his name, so that I don’t have to go into each movie’s description to look for his name.
+
+Acceptance criteria 3:
+When the user spells the name wrong in the search bar, the website should give the results based on a name in the dataset that is closest to the name entered.
+
+####################
