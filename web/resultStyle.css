@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+button{
+	font-family:  "Roboto", sans-serif;
+	font-weight: bold;
+}
+
+.page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+.content-wrap {
+  padding-bottom: 2.5rem;    
+}
+
+
+h1{
+  font-family: "Roboto", sans-serif;
+  font-weight:1000;
+  font-size: 5vw;
+	margin: 2%;
+}
+
+
+p{
+  /* These are technically the same, but use both */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  word-break: break-word;
+
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  hyphens: auto;
+}
+
+
+li, a{
+  font-family: "Roboto", sans-serif;
+  font-weight:1000;
+  font-size: 2vw;
+  text-decoration: none;
+
+}
+
+.navigation li{
+  display: inline-block;
+  padding: 0px 0px;
+}
+
+.navigation li a{
+  transition: all 0.1s ease 0s;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navigation li a:hover{
+  background-color: #FF6A5C;
+}
+
+.navigation li a.active {
+    background-color: #414141;
+}
+
+.navigation ul{
+	display: flex;
+	flex-direction: row;
+	align-items: baseline;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+	overflow: hidden;
+  background-color: #056571;
+}
+
+.page-body-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.page-name{
+  display: flex;
+	flex-direction: column;
+	justify-content: center;
+  background: #414141;
+  width: 25vw;
+  height: 5.2vh;
+  text-align: center;
+}
+
+.page-name h2{
+  color: white;
+  font-size: 2vw;
+}
+
+.search-info p{
+  padding: 1vh;
+  padding-left: 5vw;
+  padding-bottom: 0%;
+  font-size: 1.5vw;
+}
+
+.search-result-contrainer{
+  display: flex;
+  flex-direction: column;
+}
+
+.sort-container {
+	display: flex;
+  padding-top: 1%;
+	padding-left: 5vw;
+	padding-right: 5vw;
+  width: 100vw;
+  text-align: left;
+	margin-bottom: 0%;
+}
+
+.sort-container button {
+  background-color: #CCDFCB; 
+  color: black; 
+  border: 0;
+  padding: 1%;
+	font-size: 1vw;
+	cursor: pointer;
+}
+
+
+
+.sort-container button:hover {
+  background-color: #FF6A5C;
+}
+
+button.active{
+  background-color: #414141;
+  color: white;
+}
+
+.movie-info-container{
+  display: flex;
+  flex-direction: row;
+}
+
+/* .movie-info-container:hover{
+  background: #FF6A5C;
+} */
+
+.movie-poster{
+  width: 10vw;
+  height: 20vh;
+  margin: 2vh;
+  margin-left: 5vw;
+}
+
+.movie-poster img{
+  width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.movie-details{
+  margin: 2vh;
+  height: 20vh;
+  width: 75vw;
+}
+
+.movie-details b{
+  font-size: 1.5vw;
+  margin-right: 2vw;
+}
+
+.movie-details .title{
+  font-size: 2vw;
+}
+
+.movie-details .score{
+  font-size: 1.5vw;
+  color: green;
+}
+
+
+.movie-details-grid{
+  display: grid;
+  justify-content: space-around;
+  grid-template-columns: 20vw 20vw 20vw;
+  font-size: 1.5vw;
+  margin: auto;
+}
+
+
+footer{
+  background-color: #056571;
+	position: static;
+	left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 8vh;
+	text-align: center;   
+}
+
+footer p{
+	font-size: 1.5vw;
+	margin-top: 10px;
+	color: white;
+}
