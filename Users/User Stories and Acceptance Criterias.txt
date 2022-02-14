@@ -1,22 +1,25 @@
-####################
-User Story 1:
-As a multiscreen user, I want to access this website through my phone or my tablet, so that I’m not constrained by using my laptop at my desk.
+Name: Lennie Kenzie
+Descriptor: High School Senior
 
-Acceptance criteria 1:
-When the user accesses the website through mobile devices, the website page should be resized to fit the screen resolution without content missing or overlapping.
+#####################################
+User Story 1: As an incoming college student who wants to major in Films Studies, I want to find some movies that are popular and highly rated in recent 10 years so that I can get some inspiration when I take production classes in college.
 
-####################
-User Story 2:
-As a lazy entertainment seeker, I want to have a list of popular movies recommended to me, so that I don’t have to spend a lot of time searching for something interesting. 
 
-Acceptance criteria 2:
-When the “Movie Recommendation” button is clicked, the website should generate a list of movies with high scores.
+Acceptance criteria 1.a: Test with top 10 movies that have the highest scores (above 7) last year. 
+Acceptance criteria 1.b: Test with top 10 movies that have the highest scores that are outdated (released before 2000). 
+Acceptance criteria 1.c: Test with movies that have low scores (below 5).
 
-####################
-User Story 3:
-As a fan of Tom Holland, I want to get a list of movies that Tom Holland has acted in by searching his name, so that I don’t have to go into each movie’s description to look for his name.
+#####################################
+User Story 2: As a member of the school film club, I want to have a list of popular romantic movies recommended to me, so that I can recommend some of them to other members of the club, which include the girl that I like (to invite her out for a movie date). 
 
-Acceptance criteria 3:
-When the user spells the name wrong in the search bar, the website should give the results based on a name in the dataset that is closest to the name entered.
+Acceptance criteria 2.a: Test with movies with the genre romantic.
+Acceptance criteria 2.b: Test with movies with the genre action.
+Acceptance criteria 2.c: Test with movies with the genre romantic but with low scores (below 5).
 
-####################
+#####################################
+User Story 3: As a fan of Tom Holland, I want to get a list of all the movies that Tom Holland has acted in, so that I watch Spiderman again and again and become the best cosplayer of Spiderman.
+
+Acceptance criteria 3.a: Test with searching “Tom Holland”.
+Acceptance criteria 3.b: Test with searching a misspelled name such as “Ton Holand”.
+Acceptance criteria 3.c: Test with a name that doesn’t exist (Lennie Kenzie).
+
