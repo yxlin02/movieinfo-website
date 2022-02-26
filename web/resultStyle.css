@@ -1,226 +1,294 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
-
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0
 }
 
-header{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: white;
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: white
 }
 
-body{
-  margin: 0;
-  padding: 0;
-  font-family: "Roboto", sans-serif;
+body {
+	margin: 0;
+	padding: 0;
+	font-family: "Roboto", sans-serif
 }
 
-button{
-	font-family:  "Roboto", sans-serif;
-	font-weight: bold;
+button {
+	font-family: "Roboto", sans-serif;
+	font-weight: bold
 }
 
 .page-container {
-  position: relative;
-  min-height: 100vh;
+	position: relative;
+	min-height: 100vh
 }
 
 .content-wrap {
-  padding-bottom: 2.5rem;    
+	padding-bottom: 2.5rem
 }
 
-
-h1{
-  font-family: "Roboto", sans-serif;
-  font-weight:1000;
-  font-size: 5vw;
-	margin: 2%;
+h1 {
+	font-family: "Roboto", sans-serif;
+	font-weight: 1000;
+	font-size: 5vw;
+	margin: 2%
 }
 
-
-p{
-  /* These are technically the same, but use both */
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-
-  word-break: break-word;
-
-  /* Adds a hyphen where the word breaks, if supported (No Blink) */
-  hyphens: auto;
+p {
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	word-break: break-word;
+	hyphens: auto
 }
 
-
-li, a{
-  font-family: "Roboto", sans-serif;
-  font-weight:1000;
-  font-size: 2vw;
-  text-decoration: none;
-
+li,
+a {
+	font-family: "Roboto", sans-serif;
+	font-weight: 1000;
+	font-size: 2vw;
+	text-decoration: none
 }
 
-.navigation li{
-  display: inline-block;
-  padding: 0px 0px;
+.navigation li {
+	display: inline-block;
+	padding: 0
 }
 
-.navigation li a{
-  transition: all 0.1s ease 0s;
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+.navigation li a {
+	transition: all .1s ease 0s;
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none
 }
 
-.navigation li a:hover{
-  background-color: #FF6A5C;
+.navigation li a:hover {
+	background-color: #ff6a5c
 }
 
 .navigation li a.active {
-    background-color: #414141;
+	background-color: #414141
 }
 
-.navigation ul{
+.navigation ul {
 	display: flex;
 	flex-direction: row;
 	align-items: baseline;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
 	overflow: hidden;
-  background-color: #056571;
+	background-color: #056571
 }
 
-.page-body-container{
-  display: flex;
-  flex-direction: column;
+.page-body-container {
+	display: flex;
+	flex-direction: column
 }
 
-.page-name{
-  display: flex;
+.page-name {
+	display: flex;
 	flex-direction: column;
 	justify-content: center;
-  background: #414141;
-  width: 25vw;
-  height: 5.2vh;
-  text-align: center;
+	background: #414141;
+	width: 25vw;
+	height: 5.2vh;
+	text-align: center
 }
 
-.page-name h2{
-  color: white;
-  font-size: 2vw;
+.page-name h2 {
+	color: white;
+	font-size: 2vw
 }
 
-.search-info p{
-  padding: 1vh;
-  padding-left: 5vw;
-  padding-bottom: 0%;
-  font-size: 1.5vw;
+.search-info p {
+	padding: 1vh;
+	padding-left: 5vw;
+	font-size: 1.5vw
 }
 
-.search-result-contrainer{
-  display: flex;
-  flex-direction: column;
+.search-info details {
+	padding: 1vh;
+	padding-left: 5vw;
+	font-size: 1.5vw
+}
+
+details summary {
+	color: #056571;
+	width: 20vw;
+	max-height: 10vh;
+  cursor: pointer
+}
+
+form {
+	font-size: 1.5vw
+}
+
+form input {
+	margin: .5vh;
+	font-size: 1.2vw;
+	padding: .2%
+}
+
+.radio label {
+	margin-right: 1vw;
+	cursor: pointer
+}
+
+.radio input {
+  margin-left: 1vw;
+	cursor: pointer
+}
+
+.submit-button input {
+	font-size: 1.2vw;
+	margin-top: 1.5vh;
+	margin-right: 2vw;
+	margin-bottom: 1.5vh;
+	background-color: #ccdfcb;
+	color: black;
+	cursor: pointer;
+	padding: 0.8%;
+	border: 0;
+	font-weight: bold
+}
+
+.submit-button input:hover {
+	background-color: #ff6a5c
+}
+
+.search-result-contrainer {
+	display: flex;
+	flex-direction: column
 }
 
 .sort-container {
 	display: flex;
-  padding-top: 1%;
+	padding-top: 1%;
 	padding-left: 5vw;
 	padding-right: 5vw;
-  width: 100vw;
-  text-align: left;
-	margin-bottom: 0%;
+	width: 100vw;
+	text-align: left;
+	margin-bottom: 0
 }
 
 .sort-container button {
-  background-color: #CCDFCB; 
-  color: black; 
-  border: 0;
-  padding: 1%;
+	display: block;
+	font-family: "Roboto", sans-serif;
+	box-sizing: border-box;
+	background-color: #ccdfcb;
+	color: black;
+	border: 0;
+	padding: 1%;
 	font-size: 1vw;
-	cursor: pointer;
+	cursor: pointer
 }
-
-
 
 .sort-container button:hover {
-  background-color: #FF6A5C;
+	background-color: #ff6a5c
 }
 
-button.active{
-  background-color: #414141;
-  color: white;
+button.active {
+	background-color: #414141;
+	color: white;
+	text-decoration: underline
 }
 
-.movie-info-container{
-  display: flex;
-  flex-direction: row;
+.movie-info-container {
+	display: flex;
+	max-height: 25vh;
+	height: auto;
+	flex-direction: row;
+	margin-top: 2vh;
+	margin-bottom: 2vh;
+	background-color: #ddd;
+	box-shadow: .5vh .5vh 1vh #bbb
 }
 
-/* .movie-info-container:hover{
-  background: #FF6A5C;
-} */
-
-.movie-poster{
-  width: 10vw;
-  height: 20vh;
-  margin: 2vh;
-  margin-left: 5vw;
+.movie-poster {
+	width: 10vw;
+	height: 20vh;
+	margin: 2vh;
+	margin-left: 5vw
 }
 
-.movie-poster img{
-  width: 100%;
-	height: 100%;
-	object-fit: cover;
+.movie-poster img {
+	display: block;
+	max-width: 10vw;
+	max-height: 20vh;
+	width: auto;
+	height: auto;
+	object-fit: cover
 }
 
-.movie-details{
-  margin: 2vh;
-  height: 20vh;
-  width: 75vw;
+.movie-details {
+	margin: 2vh;
+	height: 20vh;
+	width: 75vw
 }
 
-.movie-details b{
-  font-size: 1.5vw;
-  margin-right: 2vw;
+.movie-details p {
+	position: relative
 }
 
-.movie-details .title{
-  font-size: 2vw;
+.movie-details summary {
+	margin-top: 1vh;
+	font-size: 1.5vw;
+	width: 21vw;
+  cursor: pointer
 }
 
-.movie-details .score{
-  font-size: 1.5vw;
-  color: green;
+summary:hover {
+	background-color: #ff6a5c
 }
 
-
-.movie-details-grid{
-  display: grid;
-  justify-content: space-around;
-  grid-template-columns: 20vw 20vw 20vw;
-  font-size: 1.5vw;
-  margin: auto;
+.movie-details b {
+	font-size: 1.5vw;
+	margin-right: 2vw
 }
 
+.movie-details .title {
+	font-size: 2vw
+}
 
-footer{
-  background-color: #056571;
+.movie-details .score {
+	font-size: 1.5vw;
+	color: green
+}
+
+.movie-details-grid {
+	display: grid;
+	justify-content: space-around;
+	grid-template-columns: 20vw 20vw 20vw;
+	font-size: 1.5vw;
+	margin: auto;
+	max-height: 10vh;
+	height: auto
+}
+
+.key {
+	font-weight: bold;
+	color: #056571
+}
+
+footer {
+	background-color: #056571;
 	position: static;
 	left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 8vh;
-	text-align: center;   
+	bottom: 0;
+	width: 100%;
+	height: 8vh;
+	text-align: center
 }
 
-footer p{
+footer p {
 	font-size: 1.5vw;
 	margin-top: 10px;
-	color: white;
+	color: white
 }
