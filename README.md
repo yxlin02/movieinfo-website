@@ -1,7 +1,10 @@
 # project-individual-yxlin02
 project-individual-yxlin02 created by GitHub Classroom
 
-Last update: Revision of audience assignment. Feb 14, 2022
+Latest Update: Revision of web assignment.
+Changes: Added filter feature. Changed the text styling. Used details to show more informtaion. Make result entries more visually seperated.
+
+Feb 14, 2022: Revision of audience assignment. 
 Changes: Rewrite the persona and user stories.
 
 **CS 257  Software Design**\

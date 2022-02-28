@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="Movie Reviewer" content="width=device-width">
+	<title>MovieInfo</title>
+	<link href="../static/style.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Roboto:wght@300;400;500;700&display=swap"
+	 rel="stylesheet">
+</head>
+
+<body>
+	<div id="page-container">
+		<div id="content-wrap">
+
+			<!-- Header contains the page name and the navigaton bar  -->
+			<header>
+				<h1> <strong>Movie<span style="color:#FF6A5C">Info</span></strong> </h1>
+               <nav class="navigation">
+                  <ul>
+                     <li><a class="active" href="index.html">Home Page</a></li>
+                     <li><a href="about.html">About The Data</a></li>
+                     <!-- Maybe use in future <li><a href="#">Filters</a></li> -->
+                  </ul>
+               </nav>
+            </header>
+
+            <!-- Separate the body of the page into two columns   -->
+            <div class="body-grid">
+               <div class="grid-picture">
+                  <img src="../static/MoanaPoster.jpg" alt="Movie Poster, Disney Moana">
+               </div>
+
+               <!-- The right column for the user instruction and search function   -->
+               <div class="grid-search">
+                  <div class="grid-search-content">
+                     <div class="instruction">
+                        <h4>To Get Started</h4>
+                        <p> MovieInfo will help you find your movies. Start by typing or pasting keywords and select one of the corresponding filter above search bar. Then press the search button.</p>
+                     </div>
+                     <div class="search-container">
+                        <form action="/results" method="post" id="filter-form">
+                           <div class="search-with-title-container">
+                              <label for="filter">Search by Title</label>
+                              <input type="text" placeholder="ex. Spider Man" name="movie-title">
+                              <button class="search-button" type="submit" form="filter-form" value="Submit"><i class="fa fa-search"></i></button>
+                              
+                           </div>
+
+                           <details id="more-filters">
+                              <summary></summary>
+                              <div class="filter-container">
+                                 <label for="filter">Filter 1</label>
+                                 <select id="filter" name="filter-one" size="1">
+                                    <option value="Genre">Genre</option>
+                                    <option value="Country">Country</option>
+                                    <option value="Company">Company</option>
+                                    <option value="Writer">Writer</option>
+                                    <option value="Director">Director</option>
+                                 </select>
+                                 <input type="text" placeholder="Optional" name="filter-one-input">
+                              </div>
+                              
+                              <div class="filter-container">
+                                 <label for="filter">Filter 2</label>
+                                 <select id="filter" name="filter-two" size="1">
+                                    <option value="Genre">Genre</option>
+                                    <option value="Country">Country</option>
+                                    <option value="Company">Company</option>
+                                    <option value="Writer">Writer</option>
+                                    <option value="Director">Director</option>
+                                 </select>
+                                 <input type="text" placeholder="Optional" name="filter-two-input">
+                              </div>
+                             
+                              <div class="filter-container">
+                                 <label for="filter">Filter 3</label>
+                                 <select id="filter" name="filter-three" size="1">
+                                    <option value="Genre">Genre</option>
+                                    <option value="Country">Country</option>
+                                    <option value="Company">Company</option>
+                                    <option value="Writer">Writer</option>
+                                    <option value="Director">Director</option>
+                                 </select>
+                                 <input type="text" placeholder="Optional" name="filter-three-input">
+                              </div>
+                           </details>
+                           
+
+                      </form>
+                      <button onclick="toggleDetails()" id="advance-filter-button">More filters</button>
+                    </div>
+
+                     <div class="top-movies-contrainer">
+											  <p>Don't know what to search?</p>
+                        <button class="top-movies-button">See Top Movies</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <footer>
+            <p>Author: Yuxin Lin, Barry Han, Duy Nguyen</p>
+         </footer>
+
+      </div>
+
+      <script>
+         function toggleDetails(){
+            const details = document.getElementById("more-filters");
+            if (details.open) {
+               // toggle close
+               details.open = false;
+               document.getElementById("advance-filter-button").innerHTML = "More filters";
+               }
+               else {
+               // toggle open
+               details.open = true;
+               document.getElementById("advance-filter-button").innerHTML = "Less filters";
+               }
+         } 
+      </script>
+
+   </body>
+</html>

@@ -6,13 +6,12 @@ class Movie:
         self.rating = movieInfo[1]
         self.genre = movieInfo[2]
         self.year = movieInfo[3]
-        self.scrore = movieInfo[4]
-        self.vote = movieInfo[5]
-        self.director = movieInfo[6]
-        self.writer = movieInfo[7]
-        self.star = movieInfo[8]
-        self.country = movieInfo[9]
-        self.runtime = movieInfo[10]
+        self.score = movieInfo[4]
+        self.director = movieInfo[5]
+        self.writer = movieInfo[6]
+        self.star = movieInfo[7]
+        self.country = movieInfo[8]
+        self.runtime = movieInfo[9]
 class DataSource:
     '''
     DataSource executes all of the queries on the database. It executes by editing the PSQL query string through setter methods.
@@ -77,9 +76,12 @@ class DataSource:
             query = self.createQuery()
             cursor.execute(query)
             resultMovie = cursor.fetchall()
+            moviesList = []
             for i in range(len(resultMovie)):
                 movieObject = Movie(resultMovie[i])
-                print(movieObject.title, ": ", movieObject)
+                moviesList.append(movieObject)
+            self.connection.close()
+            return moviesList
         except Exception as e:
             print ("Something went wrong when executing the query: ", e)
             return None

@@ -4,11 +4,11 @@ CREATE TABLE movies (
   Rating varchar,
   Genre varchar,
   ReleasedYear smallint,
-  ImdbScore float,
+  ImdbScore real,
   Director varchar,
   Writer varchar,
   Star varchar,
   Country varchar,
   Company varchar,
-  Runtime float
+  Runtime real
 );
