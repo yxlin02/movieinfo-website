@@ -40,15 +40,14 @@
                   <div class="grid-search-content">
                      <div class="instruction">
                         <h4>To Get Started</h4>
-                        <p> MovieInfo will help you find your movies. Start by typing or pasting keywords and select one of the corresponding filter above search bar. Then press the search button.</p>
+                        <p> MovieInfo will help you find your movies. Start by typing or pasting movie titles or add more filters by clicking the more filters button and seclect filter types you want. Then press the search button.</p>
                      </div>
                      <div class="search-container">
                         <form action="/results" method="post" id="filter-form">
                            <div class="search-with-title-container">
                               <label for="filter">Search by Title</label>
-                              <input type="text" placeholder="ex. Spider Man" name="movie-title">
+                              <input type="text" placeholder="Optional" name="movie-title">
                               <button class="search-button" type="submit" form="filter-form" value="Submit"><i class="fa fa-search"></i></button>
-                              
                            </div>
 
                            <details id="more-filters">
@@ -59,6 +58,7 @@
                                     <option value="Genre" selected="selected">Genre</option>
                                     <option value="Country">Country</option>
                                     <option value="Company">Company</option>
+                                    <option value="Actor">Actor</option>
                                     <option value="Writer">Writer</option>
                                     <option value="Director">Director</option>
                                  </select>
@@ -71,6 +71,7 @@
                                     <option value="Genre">Genre</option>
                                     <option value="Country" selected="selected">Country</option>
                                     <option value="Company">Company</option>
+                                    <option value="Actor">Actor</option>
                                     <option value="Writer">Writer</option>
                                     <option value="Director">Director</option>
                                  </select>
@@ -82,7 +83,8 @@
                                  <select id="filter" name="filter-three" size="1">
                                     <option value="Genre">Genre</option>
                                     <option value="Country">Country</option>
-                                    <option value="Company" selected="selected">Company</option>
+                                    <option value="Company">Company</option>
+                                    <option value="Actor" selected="selected">Actor</option>
                                     <option value="Writer">Writer</option>
                                     <option value="Director">Director</option>
                                  </select>
@@ -97,7 +99,7 @@
 
                      <div class="top-movies-contrainer">
 											  <p>Don't know what to search?</p>
-                        <button class="top-movies-button">See Top Movies</button>
+                        <button class="top-movies-button" onclick="location.href='/top10'">See Top Movies</button>
                      </div>
                   </div>
                </div>

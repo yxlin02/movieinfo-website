@@ -1,3 +1,3 @@
 user = "liny2"
 database = "liny2"
-password = "expo865eyebrow
+password = "expo865eyebrow"

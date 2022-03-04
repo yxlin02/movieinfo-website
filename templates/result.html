@@ -33,53 +33,52 @@
                     <p>Your search for <strong>{{searchInput}}</strong> found <strong>{{numOfResult}}</strong> related movie(s)</p>
                 </div>
                 <div class="advance-filter">
-                    <form class="filters" method="post" action="/results/filtered" id="advance-filter-form">
+                    <form class="filters" method="post" action="/results" id="advance-filter-form">
                         <details>
                             <summary>Show more advance filters</summary>
                             <label for="startYear">See movies released <strong>after year</strong>:</label>
-                            <input type="number" id="startYear" name="startYear" min="1980" max="2021" value="1980">
+                            <input type="number" id="startYear" name="startYear" min="1980" max="2021" value="{{inputDict['startYear']}}">
                             <label for="endYear">See movies released <strong>before year</strong>:</label>
-                            <input type="number" id="endYear" name="endYear" min="1980" max="2021" value="2021"><br>
+                            <input type="number" id="endYear" name="endYear" min="1980" max="2021" value="{{inputDict['endYear']}}"><br>
                             <label for="startScore">See movies with socres <strong>higher than</strong>:</label>
-                            <input type="number" id="startScore" name="startScore" min="1" max="10" value="1">
+                            <input type="number" id="startScore" name="startScore" min="1" max="10" value="{{inputDict['startScore']}}">
                             <label for="endScore">See movies with score <strong>lower than</strong>:</label>
-                            <input type="number" id="endScore" name="endScore" min="1" max="10" value="10"><br>
+                            <input type="number" id="endScore" name="endScore" min="1" max="10" value="{{inputDict['endScore']}}"><br>
 
                             <div class="radio">
                                 Only show rating:
-                                <input type="radio" id="G" name="rating" value="G">
+                                <input type="radio" id="G" name="rating" value="G" {% if inputDict['rating']=='G' %} checked="checked" {% endif %}>
                                 <label for="G">G</label>
-                                <input type="radio" id="NC-17" name="rating" value="NC-17">
+                                <input type="radio" id="NC-17" name="rating" value="NC-17" {% if inputDict['rating']=='NC-17' %} checked="checked" {% endif %}>
                                 <label for="NC-17">NC-17</label>
-                                <input type="radio" id="PG" name="rating" value="PG">
+                                <input type="radio" id="PG" name="rating" value="PG" {% if inputDict['rating']=='PG' %} checked="checked" {% endif %}>
                                 <label for="PG">PG</label>
-                                <input type="radio" id="PG-13" name="rating" value="PG-13">
+                                <input type="radio" id="PG-13" name="rating" value="PG-13" {% if inputDict['rating']=='PG-13' %} checked="checked" {% endif %}>
                                 <label for="PG-13">PG-13</label>
-                                <input type="radio" id="R" name="rating" value="R">
+                                <input type="radio" id="R" name="rating" value="R" {% if inputDict['rating']=='R' %} checked="checked" {% endif %}>
                                 <label for="R">R</label>
-                                <input type="radio" id="TV-14" name="rating" value="TV-14">
+                                <input type="radio" id="TV-14" name="rating" value="TV-14" {% if inputDict['rating']=='TV-14' %} checked="checked" {% endif %}>
                                 <label for="TV-14">TV-14</label>
-                                <input type="radio" id="TV-MA" name="rating" value="TV-MA">
+                                <input type="radio" id="TV-MA" name="rating" value="TV-MA" {% if inputDict['rating']=='TV-MA' %} checked="checked" {% endif %}>
                                 <label for="TV-MA">TV-MA</label>
-                                <input type="radio" id="TV-PG" name="rating" value="TV-PG">
+                                <input type="radio" id="TV-PG" name="rating" value="TV-PG" {% if inputDict['rating']=='TV-PG' %} checked="checked" {% endif %}>
                                 <label for="TV-PG">TV-PG</label>
-                                <input type="radio" id="All" name="rating" value="All" checked="checked">
+                                <input type="radio" id="All" name="rating" value="All" {% if inputDict['rating']=='All' %} checked="checked" {% endif %}>
                                 <label for="All">All</label><br>
                             </div>
                         </details>
                         <div class="sort-container">
-                            <input type="radio" name="order" value="ASC" id="ascending" checked="checked">
+                            <input type="radio" name="order" value="ASC" id="ascending" {% if inputDict['order']=='ASC' %} checked="checked" {% endif %}>
                             <label for="ascending">Ascending sort by</label>
-                            <input type="radio" name="order" value="DESC" id="descending">
+                            <input type="radio" name="order" value="DESC" id="descending" {% if inputDict['order']=='DESC' %} checked="checked" {% endif %}>
                             <label for="descending">Descending sort by</label>
-                            <input type="radio" name="sort" value="releasedYear" id="year" checked="checked">
+                            <input type="radio" name="sort" value="releasedYear" id="year" {% if inputDict['sort']=='releasedYear' %} checked="checked" {% endif %}>
                             <label for="year">Released Year</label>
-                            <input type="radio" name="sort" value="IMBDScore" id="score">
+                            <input type="radio" name="sort" value="IMBDScore" id="score" {% if inputDict['sort']=='IMBDScore' %} checked="checked" {% endif %}>
                             <label for="score">IMBD Score</label>
                         </div>
                         <div class="submit-button">
                             <input type="submit" value="Apply filter & sort">
-                            <input type="reset">
                         </div>
                     </form>
                 </div>

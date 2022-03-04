@@ -7,13 +7,27 @@ from helper import *
 
 app = flask.Flask(__name__)
 
+globalInputDict = {
+    'startYear': '1980',
+    'endYear': '2020',
+    'startScore': '1',
+    'endScore': '10',
+    'sort': 'releasedYear',
+    'order': 'ASC'
+}
+
 # This line tells the web browser to *not* cache any of the files.
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
-globalInputDict = {}
-
 def resetGlobalVar():
-    globalInputDict.clear()
+    globalInputDict = {
+        'startYear': '1980',
+        'endYear': '2020',
+        'startScore': '1',
+        'endScore': '10',
+        'sort': 'releasedYear',
+        'order': 'ASC'
+    }
 
 def updateGlobalVar(inputDict):
     globalInputDict = inputDict
@@ -30,7 +44,6 @@ def aboutData():
 
 @app.route('/results', methods=['POST', 'GET'])
 def searchResult():
-    resetGlobalVar()
     localInputDict = globalInputDict
     if request.method == 'POST':
         localInputDict = getFormInput(localInputDict, request.form)
@@ -38,22 +51,17 @@ def searchResult():
         localMovieList = getMovieListFromDB(localInputDict)
         numResult = len(localMovieList)
     updateGlobalVar(localInputDict)
-    return render_template('result.html', moviesList = localMovieList, searchInput = searchInfo, numOfResult = numResult)    
+    return render_template('result.html', moviesList = localMovieList, searchInput = searchInfo, numOfResult = numResult, inputDict = localInputDict)    
 
-
-@app.route('/results/filtered', methods=['POST', 'GET'])
-def advanceFilterResult():
+@app.route('/top10')
+def getTopTen():
     localInputDict = globalInputDict
-    if request.method == 'POST':
-        localInputDict = addFiltersToInputDict(localInputDict, request.form)
-        searchInfo = getSearchInfo(localInputDict)
-        localMovieList = getMovieListFromDB(localInputDict)
-        numResult = len(localMovieList)
+    localInputDict = addTopTenFilter(localInputDict)
+    searchInfo = getSearchInfo(localInputDict)
+    localMovieList = getMovieListFromDB(localInputDict)
+    numResult = len(localMovieList)
     updateGlobalVar(localInputDict)
-
-    return render_template('result.html', moviesList = localMovieList, searchInput = searchInfo, numOfResult = numResult)
-
-
+    return render_template('result.html', moviesList = localMovieList, searchInput = searchInfo, numOfResult = numResult, inputDict = localInputDict) 
 
 '''
 Run the program by typing 'python3 localhost [port]', where [port] is one of 
