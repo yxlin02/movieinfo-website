@@ -220,6 +220,10 @@ form {
 	background-color: #ff6a5c
 }
 
+.search-result-container{
+	min-height: 50vh;
+}
+
 .movie-info-container {
 	display: flex;
 	max-height: 25vh;
