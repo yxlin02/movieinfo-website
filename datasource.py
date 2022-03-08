@@ -286,7 +286,7 @@ class DataSource:
         number - number of the rows we want to display (int)
         '''
         if number > 0:
-            self.displayQueryArray.append("LIMIT " + number)
+            self.displayQueryArray.append("LIMIT " + str(number))
         else:
             print("Please enter a positive integer.")
 

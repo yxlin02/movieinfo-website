@@ -106,5 +106,5 @@ def addTopTenFilter(inputDict):
     newDict['startYear'] = newDict['endYear'] = '2020'
     newDict['sort'] = 'IMBDScore'
     newDict['order'] = 'DESC'
-    newDict['limit'] = '10'
+    newDict['limit'] = 10
     return newDict

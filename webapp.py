@@ -90,7 +90,7 @@ def getTopTen():
     '''
     localInputDict = getGlobalInputDict()
     localInputDict = addTopTenFilter(localInputDict)
-    searchInfo = getSearchInfo(localInputDict)
+    searchInfo = 'Recommend top 10 movies in 2020'
     localMovieList = getMovieListFromDB(localInputDict)
     numResult = len(localMovieList)
     updateGlobalInputDict(localInputDict)
