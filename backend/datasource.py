@@ -1,3 +1,4 @@
+from pandas import array
 import psycopg2
 import psqlConfig as config
 
@@ -11,18 +12,28 @@ class Movie:
         '''
         This function takes in a entry from the database and creates Movie objects which contain information about the movie.
         '''
-        self.title = movieInfo[0]
-        self.rating = movieInfo[1]
-        self.genre = movieInfo[2]
-        self.year = movieInfo[3]
-        self.score = movieInfo[4]
-        self.director = movieInfo[5]
-        self.writer = movieInfo[6]
-        self.star = movieInfo[7]
-        self.country = movieInfo[8]
-        self.company = movieInfo[9]
-        self.runtime = movieInfo[10]
+        infoArray = self.fillInBlanksInArray(movieInfo)
+        self.title = infoArray[0]
+        self.rating = infoArray[1]
+        self.genre = infoArray[2]
+        self.year = infoArray[3]
+        self.score = infoArray[4]
+        self.director = infoArray[5]
+        self.writer = infoArray[6]
+        self.star = infoArray[7]
+        self.country = infoArray[8]
+        self.company = infoArray[9]
+        self.runtime = infoArray[10]
 
+    def fillInBlanksInArray(slef, array):
+        '''
+        This function will replace the empty entries in the array with "N/A".
+        '''
+        newArray = array
+        for index in range(len(newArray)):
+            if newArray[index] == "":
+                newArray[index] = "N/A"
+        return newArray
 
 class DataSource:
     '''
@@ -34,10 +45,12 @@ class DataSource:
         '''
         This is the constructor that initializes empty arrays that are going to contain small pieces of queries and their corresponding values.
 		It also connects to the database and has it as an instance variable.
+
+        Note: filterQueryArray contains small pieces of queries with %s place holder, filterValueArray holds the actual user input.
         '''
-        self.filterQueryArray = []
+        self.filterQueryArray = [] 
+        self.filterValueArray = [] 
         self.displayQueryArray = []
-        self.filterValueArray = []
         self.connection = self.connect()
 
 
@@ -62,7 +75,7 @@ class DataSource:
 
     def getMoviesByFilters(self):
         '''
-        Execute the query string on database.
+        Execute the query string created in createQuery() on database.
 
         RETURN:
         a list of Movie objects which satisfy all the filters
@@ -78,6 +91,7 @@ class DataSource:
                 movieObject = Movie(resultMovie[i])
                 resultMovieList.append(movieObject)
             return resultMovieList
+
         except Exception as e:
             print("Something went wrong when executing the query: ", e)
             return None
@@ -125,9 +139,9 @@ class DataSource:
         PARAMETERS:
         title - the title of the movie (str)
         '''
-        self.filterQueryArray.append("Title LIKE " + "%s")
-        formatdInput = "%" + title + "%"
-        self.filterValueArray.append(formatdInput)
+        self.filterQueryArray.append("Title ILIKE " + "%s")
+        formatedInput = "%" + title + "%"
+        self.filterValueArray.append(formatedInput)
         
 
     def addFilterGenre(self, genre):
@@ -137,9 +151,9 @@ class DataSource:
         PARAMETERS:
         genre - the genre of the movie (str)
         '''
-        self.filterQueryArray.append("Genre LIKE "+ "%s")
-        formatdInput = "%" + genre + "%"
-        self.filterValueArray.append(formatdInput)
+        self.filterQueryArray.append("Genre ILIKE "+ "%s")
+        formatedInput = "%" + genre + "%"
+        self.filterValueArray.append(formatedInput)
 
 
     def addFilterActor(self, actorName):
@@ -149,9 +163,9 @@ class DataSource:
         PARAMETERS:
         actorName - the name of the actor (str)
         '''
-        self.filterQueryArray.append("Star LIKE " + "%s")
-        formatdInput = "%" + actorName + "%"
-        self.filterValueArray.append(formatdInput)
+        self.filterQueryArray.append("Star ILIKE " + "%s")
+        formatedInput = "%" + actorName + "%"
+        self.filterValueArray.append(formatedInput)
 
 
     def addFilterCountry(self, country):
@@ -161,9 +175,9 @@ class DataSource:
         PARAMETERS:
         country - the name of the country (str)
         '''
-        self.filterQueryArray.append("Country LIKE " + "%s")
-        formatdInput = "%" + country + "%"
-        self.filterValueArray.append(formatdInput)
+        self.filterQueryArray.append("Country ILIKE " + "%s")
+        formatedInput = "%" + country + "%"
+        self.filterValueArray.append(formatedInput)
 
 
     def addFilterRating(self, rating):
@@ -188,9 +202,9 @@ class DataSource:
         PARAMETERS:
         directorName - the name of the director(str)
         '''
-        self.filterQueryArray.append("Director LIKE " + "%s")
-        formatdInput = "%" + directorName + "%"
-        self.filterValueArray.append(formatdInput)
+        self.filterQueryArray.append("Director ILIKE " + "%s")
+        formatedInput = "%" + directorName + "%"
+        self.filterValueArray.append(formatedInput)
         
 
     def addFilterWriter(self, writerName):
@@ -200,9 +214,9 @@ class DataSource:
         PARAMETERS:
         writerName - the name of the writer (str)
         '''
-        self.filterQueryArray.append("Writer LIKE " + "%s")
-        formatdInput = "%" + writerName + "%"
-        self.filterValueArray.append(formatdInput)
+        self.filterQueryArray.append("Writer ILIKE " + "%s")
+        formatedInput = "%" + writerName + "%"
+        self.filterValueArray.append(formatedInput)
 
 
     def addFilterCompany(self, company):
@@ -212,12 +226,12 @@ class DataSource:
         PARAMETERS:
         company - the name of the company (str)
         '''
-        self.filterQueryArray.append("Company LIKE " + "%s")
-        formatdInput = "%" + company + "%"
-        self.filterValueArray.append(formatdInput)
+        self.filterQueryArray.append("Company ILIKE " + "%s")
+        formatedInput = "%" + company + "%"
+        self.filterValueArray.append(formatedInput)
 
 
-    def addYearRange(self, start, end):
+    def addFilterYearRange(self, start, end):
         '''
         Add a filter to select movies released within a specific year range.
 
@@ -233,15 +247,15 @@ class DataSource:
             print("Our data covers movies from 1980 to 2020, please enter a valid interval.")
 
 
-    def addScoreRange(self, start, end):
+    def addFilterScoreRange(self, start, end):
         '''
         Add a filter to select movies with scores within a specific range.
 
         PARAMETERS:
-        start- the float low end of the score intervals (str)
-        end - the float high end of the score intervals (str)
+        start- the low end of the score intervals (int)
+        end - the high end of the score intervals (int)
         '''		
-        if 1 <= int(start) <= int(end) <= 10:
+        if 1 <= start <= end <= 10:
             self.filterQueryArray.append("ImdbScore BETWEEN " + "%s" + " AND " + "%s" + " ")
             self.filterValueArray.append(start)
             self.filterValueArray.append(end)
@@ -256,9 +270,10 @@ class DataSource:
         PARAMETERS:
         order -  order of the movie, can be "DESC" or "ASC"(str)
         '''
-        self.displayQueryArray.append("ORDER BY ReleasedYear " + order)
-        # self.displayQueryArray.append("ORDER BY ReleasedYear " + "%s")
-        # self.filterValueArray.append(order)
+        if order in ['DESC', 'ASC']:
+            self.displayQueryArray.append("ORDER BY ReleasedYear " + order)
+        else:
+            print("Please enter 'DESC' or 'ASC' for order.")
 
 
     def addSortByScore(self, order):
@@ -268,35 +283,38 @@ class DataSource:
         PARAMETERS:
         order - order of the movie, can be "DESC" or "ASC"(str)
         '''
-        self.displayQueryArray.append("ORDER BY ImdbScore " + order)
-        # self.displayQueryArray.append("ORDER BY ImdbScore " + "%s")
-        # self.filterValueArray.appemd(order)
-    
+        if order in ['DESC', 'ASC']:
+            self.displayQueryArray.append("ORDER BY ImdbScore " + order)
+        else:
+            print("Please enter 'DESC' or 'ASC' for order.")
+
     
     def addNumOfDisplayRows(self, number):
         '''
         Add a query to limit how many rows of results we want from the Database.
 
         PARAMETERS:
-        number - number of the rows we want to display
+        number - number of the rows we want to display (int)
         '''
-        if int(number) > 0:
-            self.displayQueryArray.append("LIMIT " + number)
-            # self.displayQueryArray.append("LIMIT " + "%s")
-            # self.filterValueArray.append(number)
+        if number > 0:
+            self.displayQueryArray.append("LIMIT " + str(number))
         else:
             print("Please enter a positive integer.")
 
  
 def main():
+    '''
+    This is a class for testing.
+    '''
+
     # Test the constructor implementation
     testDB = DataSource()
     
     # Test the creation of query
     testDB.addFilterCountry("Japan")
-    testDB.addYearRange("1990","2000")
+    testDB.addFilterYearRange("1990","2000")
     testDB.addFilterGenre("Action")
-    testDB.addScoreRange("6","9")
+    testDB.addFilterScoreRange("6","9")
     testDB.addSortByYear("ASC")
     testDB.addNumOfDisplayRows("3")
     query = testDB.createQuery()

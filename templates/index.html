@@ -2,131 +2,148 @@
 <html>
 
 <head>
-	<meta charset="utf-8">
-	<meta name="Movie Reviewer" content="width=device-width">
-	<title>MovieInfo</title>
-	<link href="../static/style.css" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Roboto:wght@300;400;500;700&display=swap"
-	 rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="Movie Reviewer" content="width=device-width">
+    <title>MovieInfo</title>
+    <link href="../static/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Roboto:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
-	<div id="page-container">
-		<div id="content-wrap">
+    <div id="page-container">
+        <div id="content-wrap">
 
-			<!-- Header contains the page name and the navigaton bar  -->
-			<header>
-				<h1> <strong>Movie<span style="color:#FF6A5C">Info</span></strong> </h1>
-               <nav class="navigation">
-                  <ul>
-                     <li><a class="active" href="/">Home Page</a></li>
-                     <li><a href="/about">About The Data</a></li>
-                     <!-- Maybe use in future <li><a href="#">Filters</a></li> -->
-                  </ul>
-               </nav>
+            <!-- Header contains the page name and the navigaton bar  -->
+            <header>
+                <h1> <strong>Movie<span style="color:#FF6A5C">Info</span></strong> </h1>
+                <nav class="navigation">
+                    <ul>
+                        <li><a class="active" href="/">Home Page</a></li>
+                        <li><a href="/about">About The Data</a></li>
+                        <!-- Maybe use in future <li><a href="#">Filters</a></li> -->
+                    </ul>
+                </nav>
             </header>
 
             <!-- Separate the body of the page into two columns   -->
             <div class="body-grid">
-               <div class="grid-picture">
-                  <img src="https://cdn.gosschips.com/wp-content/uploads/2019/06/grid.jpg" alt="Movie Posters">
-               </div>
+                <div class="grid-picture">
+                    <img src="https://cdn.gosschips.com/wp-content/uploads/2019/06/grid.jpg" alt="Movie Posters">
+                </div>
 
-               <!-- The right column for the user instruction and search function   -->
-               <div class="grid-search">
-                  <div class="grid-search-content">
-                     <div class="instruction">
-                        <h4>To Get Started</h4>
-                        <p> MovieInfo will help you find your movies. Start by typing or pasting movie titles or add more filters by clicking the more filters button and seclect filter types you want. Then press the search button.</p>
-                     </div>
-                     <div class="search-container">
-                        <form action="/results" method="post" id="filter-form">
-                           <div class="search-with-title-container">
-                              <label for="filter">Search by Title</label>
-                              <input type="text" placeholder="Optional" name="movie-title">
-                              <button class="search-button" type="submit" form="filter-form" value="Submit"><i class="fa fa-search"></i></button>
-                           </div>
+                <!-- The right column for the user instruction and search function   -->
+                <div class="grid-search">
+                    <div class="grid-search-content">
+                        <div class="instruction">
+                            <h4>To Get Started</h4>
+                            <p> <a class="strong">MovieInfo</a> will help you find movies. Start by typing movie
+                                titles or clicking
+                                <a class="strong">more filters button</a> and seclecting filter types you
+                                want. Then
+                                press the <a class="strong">search button</a>.
+                            </p>
+                        </div>
+                        <div class="search-container">
+                            <form action="/results" method="post" id="filter-form">
+                                <div class="search-with-title-container">
+                                    <label id="label-filter" for="filter">Search by Title</label>
+                                    <input type="text" placeholder="Enter movie title (Optional)" name="movie-title">
+                                    <button class="search-button" type="submit" form="filter-form" value="Submit"><i
+                                            class="fa fa-search"></i></button>
+                                </div>
 
-                           <details id="more-filters">
-                              <summary></summary>
-                              <div class="filter-container">
-                                 <label for="filter">Filter 1</label>
-                                 <select id="filter" name="filter-one" size="1">
-                                    <option value="Genre" selected="selected">Genre</option>
-                                    <option value="Country">Country</option>
-                                    <option value="Company">Company</option>
-                                    <option value="Actor">Actor</option>
-                                    <option value="Writer">Writer</option>
-                                    <option value="Director">Director</option>
-                                 </select>
-                                 <input type="text" placeholder="Optional" name="filter-one-input">
-                              </div>
-                              
-                              <div class="filter-container">
-                                 <label for="filter">Filter 2</label>
-                                 <select id="filter" name="filter-two" size="1">
-                                    <option value="Genre">Genre</option>
-                                    <option value="Country" selected="selected">Country</option>
-                                    <option value="Company">Company</option>
-                                    <option value="Actor">Actor</option>
-                                    <option value="Writer">Writer</option>
-                                    <option value="Director">Director</option>
-                                 </select>
-                                 <input type="text" placeholder="Optional" name="filter-two-input">
-                              </div>
-                             
-                              <div class="filter-container">
-                                 <label for="filter">Filter 3</label>
-                                 <select id="filter" name="filter-three" size="1">
-                                    <option value="Genre">Genre</option>
-                                    <option value="Country">Country</option>
-                                    <option value="Company">Company</option>
-                                    <option value="Actor" selected="selected">Actor</option>
-                                    <option value="Writer">Writer</option>
-                                    <option value="Director">Director</option>
-                                 </select>
-                                 <input type="text" placeholder="Optional" name="filter-three-input">
-                              </div>
-                           </details>
-                           
+                                <!-- <button type="" onclick="toggleDetails()" id="advance-filter-button">More
+                                    filters</button> -->
 
-                      </form>
-                      <button onclick="toggleDetails()" id="advance-filter-button">More filters</button>
+                                <div id="more-filters-wrap">
+
+                                    <details id="more-filters">
+                                        <summary></summary>
+                                        <div class="filter-container">
+                                            <label for="filter">Filter 1</label>
+                                            <select id="filter" name="filter-one" size="1">
+                                                <option value="Genre" selected="selected">Genre</option>
+                                                <option value="Country">Country</option>
+                                                <option value="Company">Company</option>
+                                                <option value="Actor">Actor</option>
+                                                <option value="Writer">Writer</option>
+                                                <option value="Director">Director</option>
+                                            </select>
+                                            <input type="text" placeholder="Optional" name="filter-one-input">
+                                        </div>
+
+                                        <div class="filter-container">
+                                            <label for="filter">Filter 2</label>
+                                            <select id="filter" name="filter-two" size="1">
+                                                <option value="Genre">Genre</option>
+                                                <option value="Country" selected="selected">Country</option>
+                                                <option value="Company">Company</option>
+                                                <option value="Actor">Actor</option>
+                                                <option value="Writer">Writer</option>
+                                                <option value="Director">Director</option>
+                                            </select>
+                                            <input type="text" placeholder="Optional" name="filter-two-input">
+                                        </div>
+
+                                        <div class="filter-container">
+                                            <label for="filter">Filter 3</label>
+                                            <select id="filter" name="filter-three" size="1">
+                                                <option value="Genre">Genre</option>
+                                                <option value="Country">Country</option>
+                                                <option value="Company">Company</option>
+                                                <option value="Actor" selected="selected">Actor</option>
+                                                <option value="Writer">Writer</option>
+                                                <option value="Director">Director</option>
+                                            </select>
+                                            <input type="text" placeholder="Optional" name="filter-three-input">
+                                        </div>
+                                    </details>
+
+                                </div>
+
+
+
+                            </form>
+                            <div id="more-filter-button"></div>
+                            <button onclick="toggleDetails()" class="advance-filter-button">More filters</button>
+                        </div>
+
+                        <div class="top-movies-contrainer">
+                            <p>Don't know what to search?</p>
+                            <button class="top-movies-button" onclick="location.href='/top10'">See Top Movies</button>
+                        </div>
                     </div>
-
-                     <div class="top-movies-contrainer">
-											  <p>Don't know what to search?</p>
-                        <button class="top-movies-button" onclick="location.href='/top10'">See Top Movies</button>
-                     </div>
-                  </div>
-               </div>
+                </div>
             </div>
-         </div>
+        </div>
 
-         <footer>
+        <footer>
             <p>Author: Yuxin Lin, Barry Han, Duy Nguyen</p>
-         </footer>
+        </footer>
 
-      </div>
+    </div>
 
-      <script>
-         function toggleDetails(){
+    <script>
+        function toggleDetails() {
             const details = document.getElementById("more-filters");
             if (details.open) {
-               // toggle close
-               details.open = false;
-               document.getElementById("advance-filter-button").innerHTML = "More filters";
-               }
-               else {
-               // toggle open
-               details.open = true;
-               document.getElementById("advance-filter-button").innerHTML = "Less filters";
-               }
-         } 
-      </script>
+                // toggle close
+                details.open = false;
+                document.getElementById("advance-filter-button").innerHTML = "More filters";
+            }
+            else {
+                // toggle open
+                details.open = true;
+                document.getElementById("advance-filter-button").innerHTML = "Less filters";
+            }
+        } 
+    </script>
 
-   </body>
+</body>
+
 </html>

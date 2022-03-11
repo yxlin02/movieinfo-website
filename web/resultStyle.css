@@ -113,7 +113,7 @@ a {
 	font-size: 1.5vw
 }
 
-.search-info details {
+.advance-filter details {
 	padding: 1vh;
 	padding-left: 5vw;
 	font-size: 1.5vw
@@ -121,16 +121,16 @@ a {
 
 details summary {
 	color: #056571;
-	width: 20vw;
+	width: 11.5vw;
 	max-height: 10vh;
-  cursor: pointer
+  	cursor: pointer
 }
 
 form {
 	font-size: 1.5vw
 }
 
-form input {
+.advance-filter input {
 	margin: .5vh;
 	font-size: 1.2vw;
 	padding: .2%
@@ -146,16 +146,55 @@ form input {
 	cursor: pointer
 }
 
-.submit-button input {
-	font-size: 1.2vw;
+.sort-container label{
+	font-size: 1.5vw;
+	background: #ccdfcb;
+	height: 5vh;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	cursor: pointer;
+	padding: 1%;
+}
+
+.sort-container label:hover{
+	background-color:#ff6a5c;
+}
+
+.sort-container input[type="radio"]:checked + label {
+	color: white;
+	background-color:#414141;
+	cursor: pointer;
+	text-decoration: underline;
+  }
+
+.sort-container input[type="radio"] {
+	-webkit-appearance: none;
+	appearance: none;
+	margin: 0;
+  }
+
+#by-container{
+	display: flex;
+	align-items: center;
+	margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+.submit-button{
+	font-size: 1vw;
 	margin-top: 1.5vh;
-	margin-right: 2vw;
 	margin-bottom: 1.5vh;
+	margin-left: 5vw;
+}
+
+.submit-button input {
 	background-color: #ccdfcb;
 	color: black;
 	cursor: pointer;
-	padding: 0.8%;
+	padding: 0.5%;
 	border: 0;
+	margin-right: 2.4vw;
 	font-weight: bold
 }
 
@@ -163,14 +202,9 @@ form input {
 	background-color: #ff6a5c
 }
 
-.search-result-contrainer {
-	display: flex;
-	flex-direction: column
-}
 
 .sort-container {
 	display: flex;
-	padding-top: 1%;
 	padding-left: 5vw;
 	padding-right: 5vw;
 	width: 100vw;
@@ -194,10 +228,8 @@ form input {
 	background-color: #ff6a5c
 }
 
-button.active {
-	background-color: #414141;
-	color: white;
-	text-decoration: underline
+.search-result-container{
+	min-height: 50vh;
 }
 
 .movie-info-container {
@@ -229,6 +261,7 @@ button.active {
 
 .movie-details {
 	margin: 2vh;
+	margin-left: 15vw;
 	height: 20vh;
 	width: 75vw
 }
@@ -240,7 +273,7 @@ button.active {
 .movie-details summary {
 	margin-top: 1vh;
 	font-size: 1.5vw;
-	width: 21vw;
+	width: 18vw;
   cursor: pointer
 }
 
@@ -265,7 +298,7 @@ summary:hover {
 .movie-details-grid {
 	display: grid;
 	justify-content: space-around;
-	grid-template-columns: 20vw 20vw 20vw;
+	grid-template-columns: 25vw 25vw 25vw;
 	font-size: 1.5vw;
 	margin: auto;
 	max-height: 10vh;
@@ -275,6 +308,12 @@ summary:hover {
 .key {
 	font-weight: bold;
 	color: #056571
+}
+
+#no-result {
+	margin-left: 5vw;
+	font-size: 1.5vw;
+	margin-top: 2vh;
 }
 
 footer {

@@ -81,7 +81,7 @@ def searchResult():
         numResult = len(localMovieList)
     updateGlobalInputDict(localInputDict)
     return render_template('result.html', moviesList = localMovieList, searchInput = searchInfo, numOfResult = numResult, inputDict = localInputDict)    
-
+ 
 # Recommandation Page
 @app.route('/top10')
 def getTopTen():

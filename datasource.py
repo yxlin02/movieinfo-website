@@ -1,3 +1,4 @@
+from pandas import array
 import psycopg2
 import psqlConfig as config
 
@@ -11,18 +12,28 @@ class Movie:
         '''
         This function takes in a entry from the database and creates Movie objects which contain information about the movie.
         '''
-        self.title = movieInfo[0]
-        self.rating = movieInfo[1]
-        self.genre = movieInfo[2]
-        self.year = movieInfo[3]
-        self.score = movieInfo[4]
-        self.director = movieInfo[5]
-        self.writer = movieInfo[6]
-        self.star = movieInfo[7]
-        self.country = movieInfo[8]
-        self.company = movieInfo[9]
-        self.runtime = movieInfo[10]
+        infoArray = self.fillInBlanksInArray(movieInfo)
+        self.title = infoArray[0]
+        self.rating = infoArray[1]
+        self.genre = infoArray[2]
+        self.year = infoArray[3]
+        self.score = infoArray[4]
+        self.director = infoArray[5]
+        self.writer = infoArray[6]
+        self.star = infoArray[7]
+        self.country = infoArray[8]
+        self.company = infoArray[9]
+        self.runtime = infoArray[10]
 
+    def fillInBlanksInArray(slef, array):
+        '''
+        This function will replace the empty entries in the array with "N/A".
+        '''
+        newArray = array
+        for index in range(len(newArray)):
+            if newArray[index] == "":
+                newArray[index] = "N/A"
+        return newArray
 
 class DataSource:
     '''
@@ -128,7 +139,7 @@ class DataSource:
         PARAMETERS:
         title - the title of the movie (str)
         '''
-        self.filterQueryArray.append("Title LIKE " + "%s")
+        self.filterQueryArray.append("Title ILIKE " + "%s")
         formatedInput = "%" + title + "%"
         self.filterValueArray.append(formatedInput)
         
@@ -140,7 +151,7 @@ class DataSource:
         PARAMETERS:
         genre - the genre of the movie (str)
         '''
-        self.filterQueryArray.append("Genre LIKE "+ "%s")
+        self.filterQueryArray.append("Genre ILIKE "+ "%s")
         formatedInput = "%" + genre + "%"
         self.filterValueArray.append(formatedInput)
 
@@ -152,7 +163,7 @@ class DataSource:
         PARAMETERS:
         actorName - the name of the actor (str)
         '''
-        self.filterQueryArray.append("Star LIKE " + "%s")
+        self.filterQueryArray.append("Star ILIKE " + "%s")
         formatedInput = "%" + actorName + "%"
         self.filterValueArray.append(formatedInput)
 
@@ -164,7 +175,7 @@ class DataSource:
         PARAMETERS:
         country - the name of the country (str)
         '''
-        self.filterQueryArray.append("Country LIKE " + "%s")
+        self.filterQueryArray.append("Country ILIKE " + "%s")
         formatedInput = "%" + country + "%"
         self.filterValueArray.append(formatedInput)
 
@@ -191,7 +202,7 @@ class DataSource:
         PARAMETERS:
         directorName - the name of the director(str)
         '''
-        self.filterQueryArray.append("Director LIKE " + "%s")
+        self.filterQueryArray.append("Director ILIKE " + "%s")
         formatedInput = "%" + directorName + "%"
         self.filterValueArray.append(formatedInput)
         
@@ -203,7 +214,7 @@ class DataSource:
         PARAMETERS:
         writerName - the name of the writer (str)
         '''
-        self.filterQueryArray.append("Writer LIKE " + "%s")
+        self.filterQueryArray.append("Writer ILIKE " + "%s")
         formatedInput = "%" + writerName + "%"
         self.filterValueArray.append(formatedInput)
 
@@ -215,7 +226,7 @@ class DataSource:
         PARAMETERS:
         company - the name of the company (str)
         '''
-        self.filterQueryArray.append("Company LIKE " + "%s")
+        self.filterQueryArray.append("Company ILIKE " + "%s")
         formatedInput = "%" + company + "%"
         self.filterValueArray.append(formatedInput)
 

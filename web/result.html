@@ -6,7 +6,7 @@
     <meta name="MovieInfo" content="width=device-width">
     <title>About the Data</title>
 
-    <link href="resultStyle.css" rel="stylesheet" type="text/css" />
+    <link href="../static/resultStyle.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
@@ -19,8 +19,8 @@
                 <h1> <strong>Movie<span style="color:#FF6A5C">Info</span></strong></h1>
                 <nav class="navigation">
                     <ul>
-                        <li><a href="index.html">Home Page</a></li>
-                        <li><a href="about.html">About The Data</a></li>
+                        <li><a href="/">Home Page</a></li>
+                        <li><a href="/about">About The Data</a></li>
                     </ul>
                 </nav>
             </header>
@@ -30,135 +30,95 @@
                     <h2>Search result</h2>
                 </div>
                 <div class="search-info">
-                    <p>Your search for <strong>spiderman</strong> found <strong>3</strong> related movie(s)</p>
-                    <details>
-                        <summary>Apply filters to your search</summary>
-                        <form class="filters">
-                            <form action="/action_page.php">
-                                <label for="startYear">See movies released <strong>after year</strong>:</label>
-                                <input type="number" id="startYear" name="startYear" min="1979" max="2022">
-                                <label for="endYear">See movies released <strong>before year</strong>:</label>
-                                <input type="number" id="endYear" name="endYear" min="1979" max="2022"><br>
-                                <label for="startScore">See movies with socres <strong>higher than</strong>:</label>
-                                <input type="number" id="startScore" name="startScore" min="0" max="10">
-                                <label for="endScore">See movies with score <strong>lower than</strong>:</label>
-                                <input type="number" id="endScore" name="endScore" min="0" max="10"><br>
-
-                                <div class="radio">
-                                    Only show rating:
-                                    <input type="radio" id="G" name="rating" value="G">
-                                    <label for="G">G</label>
-                                    <input type="radio" id="NC-17" name="rating" value="NC-17">
-                                    <label for="NC-17">NC-17</label>
-                                    <input type="radio" id="PG" name="rating" value="PG">
-                                    <label for="PG">PG</label>
-                                    <input type="radio" id="PG-13" name="rating" value="PG-13">
-                                    <label for="PG-13">PG-13</label>
-                                    <input type="radio" id="R" name="rating" value="R">
-                                    <label for="R">R</label>
-                                    <input type="radio" id="TV-14" name="rating" value="TV-14">
-                                    <label for="TV-14">TV-14</label>
-                                    <input type="radio" id="TV-MA" name="rating" value="TV-MA">
-                                    <label for="TV-MA">TV-MA</label>
-                                    <input type="radio" id="TV-PG" name="rating" value="TV-PG">
-                                    <label for="TV-PG">TV-PG</label>
-                                    <input type="radio" id="All" name="rating" value="All">
-                                    <label for="All">All</label><br>
-                                </div>
-                                <div class="submit-button">
-                                    <input type="submit" value="Apply Filter(s)">
-                                    <input type="reset">
-                                </div>
-                            </form>
-                        </form>
-                    </details>
+                    <p>Your search for <strong>{{searchInput}}</strong> found <strong>{{numOfResult}}</strong> related movie(s)</p>
                 </div>
-                <div class="sort-container">
-                        <button class="direction-button" id="desc-sort" onclick="activateButton('direction-button','desc-sort')">Descending Sort By:</button>
-                        <button class="direction-button active" id="asc-sort" onclick="activateButton('direction-button','asc-sort')">Ascending Sort By:</button>
-                        <button class="sort-button active" id="year-sort" onclick="activateButton('sort-button','year-sort')">Released Year</button>
-                        <button class="sort-button" id="score-sort" onclick="activateButton('sort-button','score-sort')">IMBd Score</button>
-                        <button class="sort-button" id="default-sort" onclick="activateButton('sort-button','default-sort')">Default</button>
+                <div class="advance-filter">
+                    <form name="advance-filter-form" class="filters" method="post" action="/results" id="advance-filter-form" onsubmit="return validateForm()">
+                        <details>
+                            <summary>Advance filters</summary>
+                            <label for="startYear">See movies released <strong>after year</strong>:</label>
+                            <input type="number" id="startYear" name="startYear" min="1980" max="2021" value="{{inputDict['startYear']}}" required>
+                            <label for="endYear">See movies released <strong>before year</strong>:</label>
+                            <input type="number" id="endYear" name="endYear" min="1980" max="2021" value="{{inputDict['endYear']}}" required><br>
+                            <label for="startScore">See movies with socres <strong>higher than</strong>:</label>
+                            <input type="number" id="startScore" name="startScore" min="1" max="10" value="{{inputDict['startScore']}}" required>
+                            <label for="endScore">See movies with score <strong>lower than</strong>:</label>
+                            <input type="number" id="endScore" name="endScore" min="1" max="10" value="{{inputDict['endScore']}}" required><br>
+
+                            <div class="radio">
+                                Only show rating:
+                                <input type="radio" id="G" name="rating" value="G" {% if inputDict['rating']=='G' %} checked="checked" {% endif %}>
+                                <label for="G">G</label>
+                                <input type="radio" id="NC-17" name="rating" value="NC-17" {% if inputDict['rating']=='NC-17' %} checked="checked" {% endif %}>
+                                <label for="NC-17">NC-17</label>
+                                <input type="radio" id="PG" name="rating" value="PG" {% if inputDict['rating']=='PG' %} checked="checked" {% endif %}>
+                                <label for="PG">PG</label>
+                                <input type="radio" id="PG-13" name="rating" value="PG-13" {% if inputDict['rating']=='PG-13' %} checked="checked" {% endif %}>
+                                <label for="PG-13">PG-13</label>
+                                <input type="radio" id="R" name="rating" value="R" {% if inputDict['rating']=='R' %} checked="checked" {% endif %}>
+                                <label for="R">R</label>
+                                <input type="radio" id="TV-14" name="rating" value="TV-14" {% if inputDict['rating']=='TV-14' %} checked="checked" {% endif %}>
+                                <label for="TV-14">TV-14</label>
+                                <input type="radio" id="TV-MA" name="rating" value="TV-MA" {% if inputDict['rating']=='TV-MA' %} checked="checked" {% endif %}>
+                                <label for="TV-MA">TV-MA</label>
+                                <input type="radio" id="TV-PG" name="rating" value="TV-PG" {% if inputDict['rating']=='TV-PG' %} checked="checked" {% endif %}>
+                                <label for="TV-PG">TV-PG</label>
+                                <input type="radio" id="All" name="rating" value="All" {% if inputDict['rating']=='All' %} checked="checked" {% endif %}>
+                                <label for="All">All</label><br>
+                            </div>
+                        </details>
+                        <div class="sort-container">
+                            <input type="radio" name="order" value="ASC" id="ascending" {% if inputDict['order']=='ASC' %} checked="checked" {% endif %}>
+                            <label for="ascending">Ascending sort</label>
+                            <input type="radio" name="order" value="DESC" id="descending" {% if inputDict['order']=='DESC' %} checked="checked" {% endif %}>
+                            <label for="descending">Descending sort</label>
+                            <div id="by-container"><span>by</span></div>
+                            <input type="radio" name="sort" value="releasedYear" id="year" {% if inputDict['sort']=='releasedYear' %} checked="checked" {% endif %}>
+                            <label for="year">Released Year</label>
+                            <input type="radio" name="sort" value="IMBDScore" id="score" {% if inputDict['sort']=='IMBDScore' %} checked="checked" {% endif %}>
+                            <label for="score">IMBD Score</label>
+                        </div>
+                        <div class="submit-button">
+                            <input type="submit" value="Apply filter & sort">
+                        </div>
+                    </form>
                 </div>
 
                 <div class="search-result-container">
-                    <!-- Search result 1 -->
-                    <div class="movie-info-container">
-                        <div class="movie-poster">
-                            <img src="sample.png" alt="Sample movie poster">
+                    {% if numOfResult > 0 %}
+                        {% for index in range(numOfResult) %}
+                        <div class="movie-info-container">
+                            <!-- <div class="movie-poster">
+                                <img src="../static/sample.png" alt="Sample movie poster">
+                            </div> -->
+                            <div class="movie-details">
+                                <p> <b class="title">{{moviesList[index].title}}</b><b class="score">IMBd Score: {{moviesList[index].score}}</b><b
+                                        class="year">Release Year: {{moviesList[index].year}}</b></p>
+                                <details {% if index == 0 %} open {% endif %}>
+                                    <summary>Details about this movie</summary>
+                                    <div class="movie-details-grid">
+                                        <div class="grid-genre"> <span class="key">Genre:</span> {{moviesList[index].genre}}</div>
+                                        <div class="grid-country"><span class="key">Country:</span> {{moviesList[index].country}}</div>
+                                        <div class="grid-runtime"><span class="key">Runtime:</span> {{moviesList[index].runtime}}</div>
+                                        <div class="grid-director"><span class="key">Director:</span> {{moviesList[index].director}}</div>
+                                        <div class="grid-writer"><span class="key">Writer:</span> {{moviesList[index].writer}}</div>
+                                        <div class="grid-star"><span class="key">Movie star:</span> {{moviesList[index].star}}</div>
+                                        <div class="grid-rating"><span class="key">Rating:</span> {{moviesList[index].rating}}</div>
+                                        <div class="grid-company"><span class="key">Company:</span> {{moviesList[index].company}}</div>
+                                    </div>
+                                </details>
+                            </div>
                         </div>
-                        <div class="movie-details">
-                            <p> <b class="title">Spider-Man 1</b><b class="score">IMBd Score: 7.3</b><b
-                                    class="year">Release Year: 2007</b></p>
-                            <details>
-                                <summary>Show more about this movie</summary>
-                                <div class="movie-details-grid">
-                                    <div class="grid-genre"> <span class="key">Genre:</span> Action</div>
-                                    <div class="grid-country"><span class="key">Country:</span> United States</div>
-                                    <div class="grid-runtime"><span class="key">Runtime:</span> 102 minutes</div>
-                                    <div class="grid-director"><span class="key">Director:</span> Sam Raimi</div>
-                                    <div class="grid-writer"><span class="key">Writer:</span> Stan Lee</div>
-                                    <div class="grid-star"><span class="key">Movie star:</span> Tobey Maguire</div>
-                                    <div class="grid-rating"><span class="key">Rating:</span> PG-13</div>
-                                    <div class="grid-company"><span class="key">Company:</span> Columbia Pictures</div>
-                                </div>
-                            </details>
+                        {% endfor %}
+                    {% else %}
+                        <div class="search-result-container">
+                            <p id="no-result">No result found based on your search, please go back to the home page and revise your search.</p>
                         </div>
-                    </div>
-
-                    <!-- Search result 2 -->
-                    <div class="movie-info-container">
-                        <div class="movie-poster">
-                            <img src="sample.png" alt="Sample movie poster">
-                        </div>
-                        <div class="movie-details">
-                            <p> <b class="title">Spider-Man 2</b><b class="score">IMBd Score: 7.3</b><b
-                                    class="year">Release Year: 2008</b></p>
-                            <details>
-                                <summary>Show more about this movie</summary>
-                                <div class="movie-details-grid">
-                                    <div class="grid-genre"> <span class="key">Genre:</span> Action</div>
-                                    <div class="grid-country"><span class="key">Country:</span> United States</div>
-                                    <div class="grid-runtime"><span class="key">Runtime:</span> 102 minutes</div>
-                                    <div class="grid-director"><span class="key">Director:</span> Sam Raimi</div>
-                                    <div class="grid-writer"><span class="key">Writer:</span> Stan Lee</div>
-                                    <div class="grid-star"><span class="key">Movie star:</span> Tobey Maguire</div>
-                                    <div class="grid-rating"><span class="key">Rating:</span> PG-13</div>
-                                    <div class="grid-company"><span class="key">Company:</span> Columbia Pictures</div>
-                                </div>
-                            </details>
-                        </div>
-                    </div>
-                    
-                    <!-- Search result 3 -->
-                    <div class="movie-info-container">
-                        <div class="movie-poster">
-                            <img src="sample.png" alt="Sample movie poster">
-                        </div>
-                        <div class="movie-details">
-                            <p> <b class="title">Spider-Man 3</b><b class="score">IMBd Score: 7.3</b><b
-                                    class="year">Release Year: 2009</b></p>
-                            <details>
-                                <summary>Show more about this movie</summary>
-                                <div class="movie-details-grid">
-                                    <div class="grid-genre"> <span class="key">Genre:</span> Action</div>
-                                    <div class="grid-country"><span class="key">Country:</span> United States</div>
-                                    <div class="grid-runtime"><span class="key">Runtime:</span> 102 minutes</div>
-                                    <div class="grid-director"><span class="key">Director:</span> Sam Raimi</div>
-                                    <div class="grid-writer"><span class="key">Writer:</span> Stan Lee</div>
-                                    <div class="grid-star"><span class="key">Movie star:</span> Tobey Maguire</div>
-                                    <div class="grid-rating"><span class="key">Rating:</span> PG-13</div>
-                                    <div class="grid-company"><span class="key">Company:</span> Columbia Pictures</div>
-                                </div>
-                            </details>
-                        </div>
-                    </div>
-
+                    {% endif %}
                 </div>
+
+              
             </div>
-
-
-
         </div>
     </div>
 
@@ -166,24 +126,22 @@
         <p>Author: Yuxin Lin, Barry Han, Duy Nguyen</p>
     </footer>
 
-    <script type="text/javascript">
-        function activateButton(buttonClass, buttonID){
-            deactivateButton(buttonClass);
-            document.getElementById(buttonID).className += " active";
-        }
-
-        function deactivateButton(buttonClass){
-            const collection = document.getElementsByClassName(buttonClass + " active");
-            for (const element of collection){
-                element.className = buttonClass;
+    <script>
+        function validateForm() {
+            let x = document.forms["advance-filter-form"]["startYear"].value;
+            let y = document.forms["advance-filter-form"]["endYear"].value;
+            let a = document.forms["advance-filter-form"]["startScore"].value;
+            let b = document.forms["advance-filter-form"]["endScore"].value;
+            if (x > y) {
+                alert("Start Year must be smaller or equal to End Year");
+                return false;
             }
-        }
+            if (a > b) {
+                alert("Start Score must be smaller or equal to End Score");
+                return false;
+            }
+          }
     </script>
-
-
-
-
-
 </body>
 
 

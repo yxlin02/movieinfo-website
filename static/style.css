@@ -1,299 +1,326 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap'); */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family"Montserrat&display=swap');
+
+.strong {
+  font-weight: bolder;
+  font-size: 1.8vw;
+  color: #ff6a5c;
+}
+
 * {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	background-color: white;
-	margin-bottom: 2%
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  margin-bottom: 2%;
 }
 
 body {
-	margin: 0;
-	padding: 0;
-	font-family: "Roboto", sans-serif
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
 }
 
 button {
-	font-family: "Roboto", sans-serif;
-	font-weight: 700;
-	border-color: grey
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  border-color: grey;
 }
 
 .page-container {
-	position: relative;
-	min-height: 100vh
+  position: relative;
+  min-height: 120vh;
 }
 
 .content-wrap {
-	padding-bottom: 2.5rem
+  padding-bottom: 2.5rem;
 }
 
 h1 {
-	font-family: "Roboto", sans-serif;
-	font-weight: 1000;
-	font-size: 5vw;
-	margin: 2%
+  font-family: "Montserrat", sans-serif;
+  font-weight: 1000;
+  font-size: 5vw;
+  margin: 2%;
 }
 
 h4 {
-	font-family: "Lucida Console", "Courier New", monospace;
-	font-weight: bold;
-	font-size: 2vw;
-	color: white;
-	margin-bottom: 2vh
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  font-size: 2vw;
+  color: white;
+  margin-bottom: 2vh;
 }
 
 p {
-	overflow-wrap: break-word;
-	word-wrap: break-word;
-	word-break: break-word;
-	hyphens: auto
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 li,
 a {
-	font-family: "Roboto", sans-serif;
-	font-weight: 1000;
-	font-size: 2vw;
-	text-decoration: none
+  font-family: "Montserrat", sans-serif;
+  font-weight: 1000;
+  font-size: 2vw;
+  text-decoration: none;
 }
 
 .navigation li {
-	display: inline-block;
-	padding: 0
+  display: inline-block;
+  padding: 0;
 }
 
 .navigation li a {
-	transition: all .1s ease 0s;
-	display: block;
-	color: white;
-	text-align: center;
-	padding: 14px 16px;
-	text-decoration: none
+  transition: all 0.1s ease 0s;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
 }
 
 .navigation li a:hover {
-	background-color: #ff6a5c
+  background-color: #ff6a5c;
 }
 
 .navigation li a.active {
-	background-color: #414141
+  background-color: #414141;
 }
 
 .navigation ul {
-	display: flex;
-	flex-direction: row;
-	align-items: baseline;
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-	background-color: #056571
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #056571;
 }
 
 .flex-container {
-	display: flex;
-	justify-content: center
+  display: flex;
+  justify-content: center;
 }
 
 .flex-container div {
-	background-color: #ccdfcb;
-	margin: 1vw;
-	padding: 2vw;
-	font-size: 1.5vw;
-	border-style: solid;
-	border-color: #414141;
-	width: 30%;
-	text-align: justify
+  background-color: #ccdfcb;
+  margin: 1vw;
+  padding: 2vw;
+  font-size: 1.5vw;
+  border-style: solid;
+  border-color: #414141;
+  width: 30%;
+  text-align: justify;
 }
 
 #citation-link {
-	font-size: 1.5vw
+  font-size: 1.5vw;
 }
 
 .textbox3 p {
-	margin-bottom: 2vh;
-	text-align: left
+  margin-bottom: 2vh;
+  text-align: left;
 }
 
 .textbox3 a:hover {
-	background-color: #ff6a5c
+  background-color: #ff6a5c;
 }
 
 .body-grid {
-	display: grid;
-	grid-template-columns: 1fr 1fr
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 3px solid #ff6a5c;
+  border-bottom: 3px solid #ff6a5c;
 }
 
 .grid-picture {
-	width: 100%;
-	height: 100%;
-	position: static
+  width: 100%;
+  height: 100%;
+  position: static;
 }
 
 .grid-picture img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .grid-search {
-	width: 100%;
-	height: 100%;
-	background-color: #056571;
-	display: flex;
-	align-items: center
+  width: 100%;
+  height: 100%;
+  background-color: #056571;
+  display: flex;
+  align-items: center;
 }
 
 .grid-search-content {
-	position: relative;
-	display: flex;
-	flex-direction: column
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-left: 3px solid #ff6a5c;
 }
 
 .instruction {
-	flex: 50%;
-	margin: 2%;
-	margin-top: 5vh;
-	margin-bottom: 3vh
+  flex: 50%;
+  margin: 2%;
+  margin-top: 5vh;
+  margin-bottom: 3vh;
 }
 
 .instruction p {
-	font-style: italic;
-	font-family: "Lucida Console", "Courier New", monospace;
-	font-size: 1.8vw;
-	color: white
+  /* font-style: italic; */
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.8vw;
+  color: white;
 }
 
 .search-container {
-	margin-left: 2%;
+  margin-left: 2%;
 }
 
-.search-container button:hover{
-	background-color: #ff6a5c;
+.search-container button:hover {
+  background-color: #ff6a5c;
+}
+
+#more-filters-wrap {
+  margin-top: 2%;
 }
 
 input {
-	height: 3.5vh;
-	width: 20vw;
-	font-size: 1.5vw;
-	padding: 1%
+  height: 3.5vh;
+  width: 20vw;
+  font-size: 1.5vw;
+  padding: 1%;
 }
 
 form {
-	font-size: 1.5vw;
+  font-size: 1.5vw;
 }
 
-select, option {
-	font-size: 1.5vw;
-	height: 3.5vh;
+select,
+option {
+  font-size: 1.5vw;
+  height: 3.5vh;
 }
 
 label {
-	color: white;
-	margin-right: 1vw;
-	height: 3.5vh;
-	padding: .5%;
+  color: white;
+  margin-right: 1vw;
+  height: 3.5vh;
+  padding: 0.5%;
 }
 
-.search-with-title-container{
-	display: flex;
-	justify-content: center;
+.search-with-title-container {
+  display: flex;
+  justify-content: center;
 }
 
-.search-with-title-container input{
-	margin-left: 0.8vw;
+.search-with-title-container input {
+  margin-left: 0.8vw;
 }
 
-.filter-container{
-	margin-top: 2%;
-	display: flex;
-	justify-content: center;
+.filter-container {
+  margin-bottom: 2%;
+  display: flex;
+  justify-content: center;
 }
 
-.filter-container input{
-	margin-right: 7vw;
+.filter-container input {
+  margin-right: 7vw;
+}
+
+label {
+  min-width: 7vw;
+}
+
+#label-filter {
+  min-width: 12vw;
 }
 
 button.search-button {
-	text-align: center;
-	height: 3.5vh;
-	width: 5vw;
-	font-size: 1.2vw;
-	background-color: #ccdfcb;
-	cursor: pointer
+  text-align: center;
+  height: 3.5vh;
+  width: 5vw;
+  font-size: 1.2vw;
+  background-color: #ccdfcb;
+  cursor: pointer;
 }
-
 
 details > summary {
-	list-style: none;
+  list-style: none;
 }
 
-#advance-filter-button {
-	text-align: center;
-	height: 3.5vh;
-	width: 8vw;
-	margin-top: 1%;
-	font-size: 1.2vw;
-	padding: 0;
-	background-color: #ccdfcb;
-	cursor: pointer;
-	margin-left: 35vw;
+.advance-filter-button {
+  text-align: center;
+  height: 3.5vh;
+  width: 8vw;
+  margin-top: -1%;
+  font-size: 1.2vw;
+  padding: 0;
+  background-color: #ccdfcb;
+  cursor: pointer;
+  margin-left: 35.75vw;
 }
 
-#advance-filter-button:hover{
-	background-color: #ff6a5c;
+#advance-filter-button:hover {
+  background-color: #ff6a5c;
 }
-  
+
 .top-movies-contrainer {
-	margin-top: 2vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	margin-bottom: 5vh
+  margin-top: 3.5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5vh;
 }
 
-.top-movies-contrainer p{
-	font-family: "Roboto", sans-serif;
-	color:white;
-	padding-right: 1vw;
-	font-size: 1.8vw
+.top-movies-contrainer p {
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  padding-right: 1vw;
+  font-size: 1.8vw;
 }
 
 button.top-movies-button {
-	background-color: #ccdfcb;
-	color: black;
-	padding: 1%;
-	font-size: 1.5vw;
-	cursor: pointer
+  background-color: #ccdfcb;
+  color: black;
+  padding: 1%;
+  font-size: 1.5vw;
+  cursor: pointer;
+  font-weight: bolder;
+  min-width: 14vw;
 }
 
 button.top-movies-button:hover {
-	background-color: #ff6a5c
+  background-color: #ff6a5c;
 }
 
 .textbox3 a {
-	font-size: 1.5vw
+  font-size: 1.5vw;
 }
 
 footer {
-	background-color: #056571;
-	position: fixed;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	height: 8vh;
-	text-align: center
+  background-color: #056571;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 8.5vh;
+  text-align: center;
+  /* border-top: 2px solid #FF6A5C; */
+  position: fixed;
 }
 
 footer p {
-	font-size: 1.5vw;
-	margin-top: 2vh;
-	color: white
+  font-size: 1.5vw;
+  margin-top: 2vh;
+  color: white;
 }

@@ -33,17 +33,17 @@
                     <p>Your search for <strong>{{searchInput}}</strong> found <strong>{{numOfResult}}</strong> related movie(s)</p>
                 </div>
                 <div class="advance-filter">
-                    <form class="filters" method="post" action="/results" id="advance-filter-form">
+                    <form name="advance-filter-form" class="filters" method="post" action="/results" id="advance-filter-form" onsubmit="return validateForm()">
                         <details>
-                            <summary>Show more advance filters</summary>
+                            <summary>Advance filters</summary>
                             <label for="startYear">See movies released <strong>after year</strong>:</label>
-                            <input type="number" id="startYear" name="startYear" min="1980" max="2021" value="{{inputDict['startYear']}}">
+                            <input type="number" id="startYear" name="startYear" min="1980" max="2021" value="{{inputDict['startYear']}}" required>
                             <label for="endYear">See movies released <strong>before year</strong>:</label>
-                            <input type="number" id="endYear" name="endYear" min="1980" max="2021" value="{{inputDict['endYear']}}"><br>
+                            <input type="number" id="endYear" name="endYear" min="1980" max="2021" value="{{inputDict['endYear']}}" required><br>
                             <label for="startScore">See movies with socres <strong>higher than</strong>:</label>
-                            <input type="number" id="startScore" name="startScore" min="1" max="10" value="{{inputDict['startScore']}}">
+                            <input type="number" id="startScore" name="startScore" min="1" max="10" value="{{inputDict['startScore']}}" required>
                             <label for="endScore">See movies with score <strong>lower than</strong>:</label>
-                            <input type="number" id="endScore" name="endScore" min="1" max="10" value="{{inputDict['endScore']}}"><br>
+                            <input type="number" id="endScore" name="endScore" min="1" max="10" value="{{inputDict['endScore']}}" required><br>
 
                             <div class="radio">
                                 Only show rating:
@@ -69,9 +69,10 @@
                         </details>
                         <div class="sort-container">
                             <input type="radio" name="order" value="ASC" id="ascending" {% if inputDict['order']=='ASC' %} checked="checked" {% endif %}>
-                            <label for="ascending">Ascending sort by</label>
+                            <label for="ascending">Ascending sort</label>
                             <input type="radio" name="order" value="DESC" id="descending" {% if inputDict['order']=='DESC' %} checked="checked" {% endif %}>
-                            <label for="descending">Descending sort by</label>
+                            <label for="descending">Descending sort</label>
+                            <div id="by-container"><span>by</span></div>
                             <input type="radio" name="sort" value="releasedYear" id="year" {% if inputDict['sort']=='releasedYear' %} checked="checked" {% endif %}>
                             <label for="year">Released Year</label>
                             <input type="radio" name="sort" value="IMBDScore" id="score" {% if inputDict['sort']=='IMBDScore' %} checked="checked" {% endif %}>
@@ -85,25 +86,25 @@
 
                 <div class="search-result-container">
                     {% if numOfResult > 0 %}
-                        {% for movie in moviesList %}
+                        {% for index in range(numOfResult) %}
                         <div class="movie-info-container">
-                            <div class="movie-poster">
+                            <!-- <div class="movie-poster">
                                 <img src="../static/sample.png" alt="Sample movie poster">
-                            </div>
+                            </div> -->
                             <div class="movie-details">
-                                <p> <b class="title">{{movie.title}}</b><b class="score">IMBd Score: {{movie.score}}</b><b
-                                        class="year">Release Year: {{movie.year}}</b></p>
-                                <details>
-                                    <summary>Show more about this movie</summary>
+                                <p> <b class="title">{{moviesList[index].title}}</b><b class="score">IMBd Score: {{moviesList[index].score}}</b><b
+                                        class="year">Release Year: {{moviesList[index].year}}</b></p>
+                                <details {% if index == 0 %} open {% endif %}>
+                                    <summary>Details about this movie</summary>
                                     <div class="movie-details-grid">
-                                        <div class="grid-genre"> <span class="key">Genre:</span> {{movie.genre}}</div>
-                                        <div class="grid-country"><span class="key">Country:</span> {{movie.country}}</div>
-                                        <div class="grid-runtime"><span class="key">Runtime:</span> {{movie.runtime}}</div>
-                                        <div class="grid-director"><span class="key">Director:</span> {{movie.director}}</div>
-                                        <div class="grid-writer"><span class="key">Writer:</span>{{movie.writer}}</div>
-                                        <div class="grid-star"><span class="key">Movie star:</span> {{movie.star}}</div>
-                                        <div class="grid-rating"><span class="key">Rating:</span> {{movie.rating}}</div>
-                                        <div class="grid-company"><span class="key">Company:</span> {{movie.company}}</div>
+                                        <div class="grid-genre"> <span class="key">Genre:</span> {{moviesList[index].genre}}</div>
+                                        <div class="grid-country"><span class="key">Country:</span> {{moviesList[index].country}}</div>
+                                        <div class="grid-runtime"><span class="key">Runtime:</span> {{moviesList[index].runtime}}</div>
+                                        <div class="grid-director"><span class="key">Director:</span> {{moviesList[index].director}}</div>
+                                        <div class="grid-writer"><span class="key">Writer:</span> {{moviesList[index].writer}}</div>
+                                        <div class="grid-star"><span class="key">Movie star:</span> {{moviesList[index].star}}</div>
+                                        <div class="grid-rating"><span class="key">Rating:</span> {{moviesList[index].rating}}</div>
+                                        <div class="grid-company"><span class="key">Company:</span> {{moviesList[index].company}}</div>
                                     </div>
                                 </details>
                             </div>
@@ -125,24 +126,22 @@
         <p>Author: Yuxin Lin, Barry Han, Duy Nguyen</p>
     </footer>
 
-    <script type="text/javascript">
-        function activateButton(buttonClass, buttonID){
-            deactivateButton(buttonClass);
-            document.getElementById(buttonID).className += " active";
-        }
-
-        function deactivateButton(buttonClass){
-            const collection = document.getElementsByClassName(buttonClass + " active");
-            for (const element of collection){
-                element.className = buttonClass;
+    <script>
+        function validateForm() {
+            let x = document.forms["advance-filter-form"]["startYear"].value;
+            let y = document.forms["advance-filter-form"]["endYear"].value;
+            let a = document.forms["advance-filter-form"]["startScore"].value;
+            let b = document.forms["advance-filter-form"]["endScore"].value;
+            if (x > y) {
+                alert("Start Year must be smaller or equal to End Year");
+                return false;
             }
-        }
+            if (a > b) {
+                alert("Start Score must be smaller or equal to End Score");
+                return false;
+            }
+          }
     </script>
-
-
-
-
-
 </body>
 
 
