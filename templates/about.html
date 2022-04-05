@@ -1,57 +1,68 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <meta charset="utf-8">
-      <meta name="Movie Reviewer" content="width=device-width">
-      <title>About the Data</title>
-      <link href="../static/style.css" rel="stylesheet" type="text/css" />
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      <!-- <script src="script.js"></script> -->
-   </head>
 
-   <body>
-      <div id="page-container">
-         <div id="content-wrap">
+<head>
+   <meta charset="utf-8">
+   <meta name="Movie" content="width=device-width">
+   <title>About the Data</title>
+   <link rel="stylesheet" href="../static/mainStyle.css" type="text/css">
+   <link rel="stylesheet" href="../static/aboutStyle.css" type="text/css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 
-            <!-- Header contains the page name and the navigaton bar  -->
-            <header>
-               <h1> <strong>Movie<span style="color:#FF6A5C">Info</span></strong> </h1>
-               <nav class="navigation">
-                  <ul>
-                     <li><a href="/">Home Page</a></li>
-                     <li><a class="active" href="/about">About The Data</a></li>
-                     <!-- Maybe use in future <li><a href="#">Filters</a></li> -->
-                  </ul>
-               </nav>
-            </header>
+<body>
+   <div id="page-container">
+      <div id="content-wrap">
 
-            <div class="flex-container">
+         <!-- Header contains the page name and the navigaton bar  -->
+         <header>
+            <h1> <strong>Movie<span style="color:#FF6A5C">Info</span></strong> </h1>
+            <nav class="navigation">
+               <ul>
+                  <li><a href="/">Home Page</a></li>
+                  <li><a class="active" href="/about">About The Data</a></li>
+               </ul>
+            </nav>
+         </header>
 
-               <div class="textbox1">
-                  <h2>Use of Kaggle</h2>
-                  <p>We searched the keywords “movie recommendations” on Kaggle and found this silver-rated (218 up-votes) dataset called <em>Movie Industry: Four decades of movies</em> collected by Daniel Grijalva, a student at Universidad de Sonora, through scraping the HTML from IMDb with a Python script. This dataset is also used in a GitHub Project created by Daniel, it also has 84.9k views and 16k downloads. It has a CC0 license and the data is in a .csv file.</p>
-               </div>
+         <div class="flex-container">
 
-               <div class="textbox2">
-                  <h2>Dataset Insight</h2>
-                  <p>We are using the second version of this dataset which is updated on July 23, 2021. We have downloaded a local copy of the dataset, as well as the GitHub repo with the scarping script used on January 23, 2022. The dataset contains movie data from 1980 to 2020 worldwide. In total, there are 7668 movies and each of them has the following attributes: <em>name, rating, genre, year, released data, score, votes, director, writer, and movie stars participated.</em></p>
-               </div>
-               
-               <div class="textbox3">
-                  <h2>Resources</h2>
-                  <p>
-                     <a href="https://www.kaggle.com/danielgrijalvas/movies">Link to Kaggle content</a><br>
-                     <a href="https://www.kaggle.com/danielgrijalvas/movies/metadata">Link to metadata</a>
-                  </p>
-                  <p>
-                     <strong>Citation</strong>: <br>Grijalva, Daniel (2021). <em>Movie Industry: Four decades of movies</em> (Version 2). Kaggle. URL: <a href="https://www.kaggle.com/danielgrijalvas/movies" id="citation-link">https://www.kaggle.com/danielgrijalvas/movies</a>. Retrieved on Jan 23, 2022.  
-                  </p>
-               </div>
+            <div class="textbox1">
+               <h2>Use of Kaggle</h2>
+               <p>We searched the keywords “movie recommendations” on Kaggle and found this silver-rated (218 up-votes)
+                  dataset called <em>Movie Industry: Four decades of movies</em> collected by Daniel Grijalva, a student
+                  at Universidad de Sonora, through scraping the HTML from IMDb with a Python script. This dataset is
+                  also used in a GitHub Project created by Daniel, it also has 84.9k views and 16k downloads. It has a
+                  CC0 license and the data is in a .csv file.</p>
+            </div>
+
+            <div class="textbox2">
+               <h2>Dataset Insight</h2>
+               <p>We are using the second version of this dataset which is updated on July 23, 2021. We have downloaded
+                  a local copy of the dataset, as well as the GitHub repo with the scarping script used on January 23,
+                  2022. The dataset contains movie data from 1980 to 2020 worldwide. In total, there are 7668 movies and
+                  each of them has the following attributes: <em>name, rating, genre, year, released data, score, votes,
+                     director, writer, and movie stars participated.</em></p>
+            </div>
+
+            <div class="textbox3">
+               <h2>Resources</h2>
+               <p>
+                  <a href="https://www.kaggle.com/danielgrijalvas/movies">Link to Kaggle content</a><br>
+                  <a href="https://www.kaggle.com/danielgrijalvas/movies/metadata">Link to metadata</a>
+               </p>
+               <p>
+                  <strong>Citation</strong>: <br>Grijalva, Daniel (2021). <em>Movie Industry: Four decades of
+                     movies</em> (Version 2). Kaggle. URL: <a href="https://www.kaggle.com/danielgrijalvas/movies"
+                     id="citation-link">https://www.kaggle.com/danielgrijalvas/movies</a>. Retrieved on Jan 23, 2022.
+               </p>
             </div>
          </div>
       </div>
-      <footer>
-         <p>Author: Yuxin Lin, Barry Han, Duy Nguyen</p>
-      </footer>
-   </body>
+   </div>
+   <footer>
+      <p>Author: Yuxin Lin, Barry Han, Duy Nguyen</p>
+   </footer>
+</body>
+
 </html>
